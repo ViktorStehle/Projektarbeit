@@ -5,8 +5,9 @@ In dem folgenden Projekt erstellt unser Team der HWR - Duales Studium Wirtschaft
 
 -Einen Sportplan zu wählen <br>
 -Kilokalorien aufnahme und verbrauch errechnen (Kilokalorienbedarf) <br>
-hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+
 ![Use_Cases_Fitness_App](https://github.com/ViktorStehle/Projektarbeit/assets/106766191/484efe1d-7b62-482d-8e2c-885d15e1751a)
+![Klassendiagramm](https://github.com/ViktorStehle/Projektarbeit/assets/171509677/6e157157-774e-4171-bb0e-671ef7aa4c2e)
 
 Inhalte die Berücksichtig werden sollten:
 -Thema, Motivation, Zielstellung und Projektplanung <br>
