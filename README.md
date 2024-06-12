@@ -5,7 +5,7 @@ In dem folgenden Projekt erstellt unser Team der HWR - Duales Studium Wirtschaft
 
 -Einen Sportplan zu wählen <br>
 -Kilokalorien aufnahme und verbrauch errechnen (Kilokalorienbedarf) <br>
-
+hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 ![Use_Cases_Fitness_App](https://github.com/ViktorStehle/Projektarbeit/assets/106766191/484efe1d-7b62-482d-8e2c-885d15e1751a)
 
 Inhalte die Berücksichtig werden sollten:
