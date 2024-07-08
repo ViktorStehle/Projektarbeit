@@ -16,3 +16,7 @@ Inhalte die Berücksichtig werden sollten:
 -Prototypische Lösungsansätze (unter Nutzung von Java) (ansatzweise!) <br>
 -Ideen zur Qualitätssicherung der Implementierung <br>
 -Stand der Projektabwicklung und Offene Probleme <br>
+
+WICHTIG! Wir haben für das GUI folgenden Guide benutzt. <br>
+https://www.youtube.com/@Randomcode_0 <br>
+
