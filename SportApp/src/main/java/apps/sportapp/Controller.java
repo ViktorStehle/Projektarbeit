@@ -65,7 +65,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sportart.getItems().addAll("Ausdauersport", "Kraftsport", "Kampfsport", "Bettsport", "Kopfsport");
+        sportart.getItems().addAll("       ","Ausdauersport", "Kraftsport", "Kampfsport", "Bettsport", "Kopfsport");
     }
 
 }
