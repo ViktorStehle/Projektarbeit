@@ -20,3 +20,5 @@ Inhalte die Berücksichtig werden sollten:
 WICHTIG! Wir haben für das GUI folgenden Guide benutzt. <br>
 https://www.youtube.com/@Randomcode_0 <br>
 
+Google Docs mit Tests zu Anmeldung + Registration
+https://docs.google.com/document/d/1ygwUZ1lwsaSvUwOR7lKWnRCCfixIiJIXQZVMdGvsTJk/edit
