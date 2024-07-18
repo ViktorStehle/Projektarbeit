@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class LoginController {
@@ -25,6 +26,22 @@ public class LoginController {
 
         try {
             List<String> users = UserFileUtil.readUsers();
+
+            //durch das Einlesen wird hier das users-Array aus RegisterController mit den Werten aus users.txt gesetzt
+            String[] arr = new String[users.size()];
+            users.toArray(arr);
+            for(int i = 0; i < arr.length;i++){
+                String[] userNow = arr[i].split(",");
+                String name = userNow[0];
+                String passwort = userNow[1];
+                String geschlecht = userNow[2];
+                LocalDate gbdate = LocalDate.parse(userNow[4]);
+                double gewicht = Integer.parseInt(userNow[3]);
+                double groesse = Integer.parseInt(userNow[5]);
+                User newUser = new User(name, passwort, geschlecht, gbdate, gewicht, groesse);
+                RegisterController.users = User.appendUser(RegisterController.users, newUser);
+            }
+
             boolean authenticated = users.stream()
                     .anyMatch(line -> {
                         String[] parts = line.split(",");
@@ -35,6 +52,13 @@ public class LoginController {
                 Stage stage = (Stage) usernameField.getScene().getWindow();
                 stage.close();
                 openMainWindow();
+
+                for(int i = 0; i < RegisterController.users.length; i++){
+                    if(RegisterController.users[i].name.equals(username)){
+                        Controller.setCurrentUser(username);
+                    }
+                }
+
             } else {
                 showAlert(Alert.AlertType.ERROR, "Anmeldefehler", "Ungültiger Benutzername oder Passwort");
             }

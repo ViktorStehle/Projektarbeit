@@ -32,6 +32,8 @@ public class RegisterController {
     @FXML
     private TextField passwordField;
 
+    protected static User[] users = new User[0]; //Userverwaltung, indem alle User in einem Array gespeichert werden
+
     @FXML
     private void handleSubmit() {
         String gender = genderChoiceBox.getValue();
@@ -63,7 +65,12 @@ public class RegisterController {
                 return;
             }
 
+            //Abspeichern eines neuen Users im users-Array
+            User newUser = new User(username, password, gender, LocalDate.parse(birthDate.toString()),Integer.parseInt(weight), Integer.parseInt(height));
+            users = User.appendUser(users, newUser);
+            Controller.setCurrentUser(newUser.name);
             UserFileUtil.saveUser(userData);
+
             showAlert(Alert.AlertType.INFORMATION, "Erfolgreich", "Registrierung erfolgreich.");
         } catch (IOException e) {
             e.printStackTrace();
