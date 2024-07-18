@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Day {
 
-    LocalDate date = LocalDate.now();
+    LocalDate date;
     int schritte = 0;
     double[] kalPlus = new double[0];
     double[] kalMinus = new double[0];
