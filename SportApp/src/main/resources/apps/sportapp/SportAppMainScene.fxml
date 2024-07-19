@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apps.sportapp.Controller">
+    <TabPane fx:id="tabPane" prefHeight="431.0" prefWidth="429.0">
+        <tabs>
+            <!-- Daily Tab -->
+            <Tab closable="false" text="Daily">
+                <AnchorPane>
+                    <VBox alignment="CENTER" layoutX="53.0" layoutY="63.0" prefHeight="238.0" prefWidth="323.0" spacing="10" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="63.0">
+                        <Label text="Kalorien Einnahme:" />
+                        <TextField fx:id="kcalPlusField" />
+                        <Label text="Schritte:" />
+                        <TextField fx:id="stepsField" />
+                        <Button onAction="#handleSaveDaily" text="Speichern" />
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <!-- Graph Tab -->
+            <Tab closable="false" text="Statistik">
+                <AnchorPane>
+                    <VBox alignment="CENTER" spacing="10" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <LineChart fx:id="chart" prefHeight="319.0" prefWidth="408.0" title="Kalorienstatistik der letzten 7 Tage">
+                            <xAxis>
+                                <CategoryAxis label="Datum" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Kalorien" />
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <!-- Sport Tab -->
+            <Tab closable="false" text="Sport">
+                <AnchorPane>
+                    <VBox alignment="CENTER" layoutX="91.0" layoutY="51.0" prefHeight="328.0" prefWidth="247.0" spacing="10" AnchorPane.leftAnchor="91.0" AnchorPane.topAnchor="51.0">
+                        <Label text="Wählen Sie die Sportart:" />
+                        <ChoiceBox fx:id="sportChoiceBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Joggen" />
+                                    <String fx:value="Radfahren" />
+                                    <String fx:value="Schwimmen" />
+                                </FXCollections>
+                            </items>
+                        </ChoiceBox>
+                        <Label text="Dauer in Minuten:" />
+                        <TextField fx:id="durationField" />
+                        <Label text="Distanz in KM:" />
+                        <TextField fx:id="distanceField" />
+                        <Button onAction="#calculateSport" text="Berechnen und Speichern" />
+                        <Label fx:id="speedLabel" text="Durchschnittsgeschwindigkeit: " />
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <!-- Logout Tab -->
+            <Tab closable="false" text="Logout">
+                <AnchorPane>
+                    <VBox alignment="CENTER" layoutX="91.0" layoutY="51.0" prefHeight="248.0" prefWidth="247.0" spacing="10" AnchorPane.leftAnchor="91.0" AnchorPane.topAnchor="51.0">
+                        <Button onAction="#logout" text="Abmelden" />
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox>
