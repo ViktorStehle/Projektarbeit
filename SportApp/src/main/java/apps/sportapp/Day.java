@@ -30,14 +30,6 @@ public class Day {
         this.kalStand = kalStand;
     }
 
-    /*
-     * Klasseneigene Methoden
-     */
-
-    /*
-     * isDay: überprüft, ob ein Tag-Objekt für den aktuellen Tag vorhanden ist
-     * im Tag[]-Array des Users
-     */
     public static boolean isDay(Day[] days, LocalDate date){
         for (Day day : days) {
             if (day.date.equals(date)) {
@@ -47,9 +39,6 @@ public class Day {
         return false;
     }
 
-    /*
-     * Getter- und Settermethoden
-     */
     public LocalDate getDate() {
         return date;
     }
@@ -70,11 +59,7 @@ public class Day {
         return kalPlus;
     }
 
-    /*
-     * setKalPlus
-     * Ersatzarray wird erstellt, der um 1 länger ist als this
-     * Array wird ins Ersatzarray kopiert, neuer Eintrag am Ende eingetragen
-     */
+
     public void setKalPlus(double kalPlus) {
         double[] ersatz = new double[this.kalPlus.length+1];
         for(int i = 0; i < ersatz.length; i++) {

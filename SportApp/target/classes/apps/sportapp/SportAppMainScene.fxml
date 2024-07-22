@@ -18,6 +18,7 @@
                         <Label text="Schritte:" />
                         <TextField fx:id="stepsField" />
                         <Button onAction="#handleSaveDaily" text="Speichern" />
+                        <Label fx:id="balanceLabel" text="Kalorienbilanz: Keine Daten"/>
                     </VBox>
                 </AnchorPane>
             </Tab>

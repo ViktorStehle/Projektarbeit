@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
@@ -21,24 +22,22 @@ public class LoginController {
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-
         try {
-            List<User> users = UserFileUtil.readUsers();  // Lesen von User-Objekten
+            List<User> users = UserFileUtil.readUsers();  // Read User objects
 
             boolean authenticated = users.stream()
                     .anyMatch(user -> user.getName().equals(username) && user.getPassword().equals(password));
 
             if (authenticated) {
                 Controller.setCurrentUser(username);
-                Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.close();
-                openMainWindow();
+                Stage currentStage = (Stage) usernameField.getScene().getWindow(); // Get current stage
+                openMainWindow(); // Open the main window
+                currentStage.close(); // Close the login window
             } else {
-                showAlert(Alert.AlertType.ERROR, "Anmeldefehler", "Ungültiger Benutzername oder Passwort");
+                showAlert("Login Error", "Invalid username or password.");
             }
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Fehler beim Lesen der Benutzerdaten.");
+            showAlert("Error", "Error reading user data.");
         }
     }
 
@@ -46,26 +45,23 @@ public class LoginController {
     private void handleRegister() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Register.fxml"));
-            javafx.scene.Scene scene = new javafx.scene.Scene(fxmlLoader.load());
             Stage stage = new Stage();
-            stage.setTitle("Angaben zum Benutzer");
-            stage.setScene(scene);
+            stage.setTitle("User Registration");
+            stage.setScene(new Scene(fxmlLoader.load()));
             stage.show();
-
             ((Stage) usernameField.getScene().getWindow()).close();
         } catch (IOException e) {
-            e.printStackTrace();
+            showAlert("Error", "Unable to load registration form.");
         }
     }
 
     @FXML
     private void handleCancel() {
-        Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.close();
+        ((Stage) usernameField.getScene().getWindow()).close();
     }
 
-    private void showAlert(Alert.AlertType alertType, String title, String content) {
-        Alert alert = new Alert(alertType);
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(title);
         alert.setContentText(content);
         alert.showAndWait();
@@ -74,13 +70,13 @@ public class LoginController {
     private void openMainWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SportAppMainScene.fxml"));
-            javafx.scene.Scene scene = new javafx.scene.Scene(fxmlLoader.load());
             Stage mainStage = new Stage();
             mainStage.setTitle("SportApp");
-            mainStage.setScene(scene);
+            mainStage.setScene(new Scene(fxmlLoader.load()));
             mainStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Print stack trace for debugging
+            showAlert("Error", "Unable to load main application window.");
         }
     }
 }
