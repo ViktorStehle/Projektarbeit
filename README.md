@@ -35,8 +35,8 @@ textlueller / tabellarischer Form beschreibt, Claries
 Klassenhierarchien u.ä.), Arian 
  Entwurfsmodell, das die technische Umsetzung der fachlichen
 Problemlösung beschreibt (z.B. durch Verwendung von Collections,
-Interfaces u.ä.), 
+Interfaces u.ä.),Arian
  Analysemodell und Entwurfsmodell können auch zusammengelegt werden
- Codierung (Source-Code)
- Testprotokolle, die die durchgeführten Tests dokumentieren,
- Nutzerhandbuch und Installationsanleitung (falls erforderlich)
+ Codierung (Source-Code), Viktor
+ Testprotokolle, die die durchgeführten Tests dokumentieren, Felix
+ Nutzerhandbuch und Installationsanleitung (falls erforderlich), Lio
