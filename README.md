@@ -22,3 +22,6 @@ https://www.youtube.com/@Randomcode_0 <br>
 
 Google Docs mit Tests zu Anmeldung + Registration
 https://docs.google.com/document/d/1ygwUZ1lwsaSvUwOR7lKWnRCCfixIiJIXQZVMdGvsTJk/edit
+
+Google Docs mit Tests zum Update vom 19.07.2024
+https://docs.google.com/document/d/1webnmagFkGTLAmq89r8FCmKDqbDG2jTPzmziAdCyfSU/edit?usp=sharing
