@@ -29,14 +29,14 @@ https://docs.google.com/document/d/1webnmagFkGTLAmq89r8FCmKDqbDG2jTPzmziAdCyfSU/
 Projektplan
  Anforderungsbeschreibung (Pflichtenheft, Use Case-Beschreibung
 oder ä.), die die Anforderungen an die zu erstellende Software in
-textlueller / tabellarischer Form beschreibt, Claries
+textlueller / tabellarischer Form beschreibt, Claries<br>
  Analysemodell (Fachkonzept), das das fachliche Problem spezifiziert
 (textlich und untersetzt mit geeigneten Diagrammen (z.B.
-Klassenhierarchien u.ä.), Arian 
+Klassenhierarchien u.ä.), Arian <br>
  Entwurfsmodell, das die technische Umsetzung der fachlichen
 Problemlösung beschreibt (z.B. durch Verwendung von Collections,
-Interfaces u.ä.),Arian
+Interfaces u.ä.),Arian<br>
  Analysemodell und Entwurfsmodell können auch zusammengelegt werden
- Codierung (Source-Code), Viktor
- Testprotokolle, die die durchgeführten Tests dokumentieren, Felix
- Nutzerhandbuch und Installationsanleitung (falls erforderlich), Lio
+ Codierung (Source-Code), Viktor<br>
+ Testprotokolle, die die durchgeführten Tests dokumentieren, Felix<br>
+ Nutzerhandbuch und Installationsanleitung (falls erforderlich), Lio<br>
