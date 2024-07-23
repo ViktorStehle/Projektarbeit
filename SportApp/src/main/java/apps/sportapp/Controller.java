@@ -60,14 +60,18 @@ public class Controller {
 
     private void loadCurrentUser() {
         if (currentUser == null) {
+            showAlert(Alert.AlertType.ERROR, "Fehler", "Kein Benutzer ausgewählt.");
             return;
         }
         currentUserObj = RegisterController.users.stream()
                 .filter(user -> user.getName().equals(currentUser))
                 .findFirst()
                 .orElse(null);
+
         if (currentUserObj == null) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Kein Benutzer ausgewählt.");
+            showAlert(Alert.AlertType.ERROR, "Fehler", "Benutzer nicht gefunden.");
+        } else {
+            System.out.println("Benutzer erfolgreich geladen: " + currentUser);
         }
     }
 

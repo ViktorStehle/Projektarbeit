@@ -33,7 +33,7 @@ public class RegisterController {
     @FXML
     private TextField passwordField;
 
-    protected static List<User> users = new ArrayList<>();  // Speichert alle Benutzer
+    protected static List<User> users = new ArrayList<>();
 
     @FXML
     private void handleSubmit() {
@@ -44,79 +44,76 @@ public class RegisterController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // Validate inputs
-        if (username.isEmpty() || password.isEmpty() || gender == null || gender.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte füllen Sie alle Felder korrekt aus.");
+        if (!validateInputs(username, password, gender, weight, height, birthDate)) {
             return;
         }
 
-        if (weight.isEmpty() || !weight.matches("\\d+")) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Ist das wirklich Ihr Körpergewicht? Bitte geben Sie eine positive Ganzzahl ein.");
-            return;
-        }
+        User newUser = null;  // Deklarieren Sie newUser außerhalb des try-Blocks
 
-        int weightValue = Integer.parseInt(weight);
-        if (weightValue <= 0) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Ist das wirklich Ihr Körpergewicht? Körpergewicht muss größer als 0 sein.");
-            return;
-        }
-
-        if (height.isEmpty() || !height.matches("\\d+")) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Ist das wirklich Ihre Körpergröße? Bitte geben Sie eine positive Ganzzahl ein.");
-            return;
-        }
-
-        int heightValue = Integer.parseInt(height);
-        if (heightValue <= 0) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Ist das wirklich Ihre Körpergröße? Körpergröße muss größer als 0 sein.");
-            return;
-        }
-
-        if (birthDate == null) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte wählen Sie ein Geburtsdatum.");
-            return;
-        }
-
-        if (birthDate.isAfter(LocalDate.now())) {
-            showAlert(Alert.AlertType.ERROR, "Fehler", "Geburtstag befindet sich in der Zukunft.");
-            return;
-        }
-
-        // Save user data
         try {
-            // Check if username already exists
             boolean userExists = users.stream().anyMatch(user -> user.getName().equals(username));
-
             if (userExists) {
                 showAlert(Alert.AlertType.ERROR, "Fehler", "Benutzername ist bereits vergeben.");
                 return;
             }
 
-            // Abspeichern eines neuen Users in der users-Liste
-            User newUser = new User(username, password, gender, birthDate, weightValue, heightValue);
+            newUser = new User(username, password, gender, birthDate, Integer.parseInt(weight), Integer.parseInt(height));
             users.add(newUser);
-
             UserFileUtil.saveUsers(users);
 
-            showAlert(Alert.AlertType.INFORMATION, "Erfolgreich", "Registrierung erfolgreich.");
-
-            // Set current user and open main window
-            Controller.setCurrentUser(newUser.getName());
-            openMainWindow();
         } catch (IOException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Fehler", "Fehler beim Speichern der Benutzerdaten.");
+            return;
         }
+
+        showSuccessAlert(newUser);  // Übergeben Sie newUser an showSuccessAlert
+    }
+
+    private void showSuccessAlert(User newUser) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("Erfolgreich");
+        alert.setContentText("Registrierung erfolgreich.");
+        alert.showAndWait().ifPresent(response -> {
+            System.out.println("Setting currentUser: " + newUser.getName());
+            Controller.setCurrentUser(newUser.getName());
+            openMainWindow();
+            closeRegisterWindow();
+        });
     }
 
     @FXML
     private void initialize() {
         genderChoiceBox.getItems().addAll("Weiblich", "Männlich", "Diverse");
         try {
-            users = UserFileUtil.readUsers();  // Laden Sie Benutzer beim Initialisieren des Controllers
+            users = UserFileUtil.readUsers();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean validateInputs(String username, String password, String gender, String weight, String height, LocalDate birthDate) {
+        if (username.isEmpty() || password.isEmpty() || gender == null || gender.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte füllen Sie alle Felder korrekt aus.");
+            return false;
+        }
+
+        if (weight.isEmpty() || !weight.matches("\\d+") || Integer.parseInt(weight) <= 0) {
+            showAlert(Alert.AlertType.ERROR, "Fehler", "Ist das wirklich Ihr Körpergewicht? Bitte geben Sie eine positive Ganzzahl ein.");
+            return false;
+        }
+
+        if (height.isEmpty() || !height.matches("\\d+") || Integer.parseInt(height) <= 0) {
+            showAlert(Alert.AlertType.ERROR, "Fehler", "Ist das wirklich Ihre Körpergröße? Bitte geben Sie eine positive Ganzzahl ein.");
+            return false;
+        }
+
+        if (birthDate == null || birthDate.isAfter(LocalDate.now())) {
+            showAlert(Alert.AlertType.ERROR, "Fehler", "Geburtstag befindet sich in der Zukunft.");
+            return false;
+        }
+
+        return true;
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
@@ -129,14 +126,18 @@ public class RegisterController {
     private void openMainWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SportAppMainScene.fxml"));
-            javafx.scene.Scene scene = new javafx.scene.Scene(fxmlLoader.load());
-            Stage mainStage = new Stage();
-            mainStage.setTitle("SportApp");
-            mainStage.setScene(scene);
-            mainStage.show();
+            Stage stage = new Stage();
+            stage.setTitle("SportApp");
+            stage.setScene(new javafx.scene.Scene(fxmlLoader.load()));
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void closeRegisterWindow() {
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        stage.close();
     }
 
     public static void setUsers(List<User> usersList) {

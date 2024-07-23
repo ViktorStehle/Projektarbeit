@@ -84,15 +84,15 @@ public class User implements Serializable {
 
         // Setter-Methoden
         public void setSteps(int steps) {
-            this.steps = steps;
+            this.steps = steps + this.steps;
         }
 
         public void setKcalPlus(double kcalPlus) {
-            this.kcalPlus = kcalPlus;
+            this.kcalPlus = this.kcalPlus + kcalPlus;
         }
 
         public void setKcalMinus(double kcalMinus) {
-            this.kcalMinus = kcalMinus;
+            this.kcalMinus = this.kcalMinus + kcalMinus;
         }
 
         // Getter-Methoden

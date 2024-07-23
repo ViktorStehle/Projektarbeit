@@ -12,7 +12,7 @@ public class Joggen extends Ausdauersportarten {
 
     @Override
     public int getKcal() {
-        return kcal;
+        return this.kcal;
     }
 
     @Override
