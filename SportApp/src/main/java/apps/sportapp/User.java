@@ -51,14 +51,6 @@ public class User implements Serializable {
         return height;
     }
 
-    // Methode zum Hinzufügen von Kalorienaufnahme und Kalorienverbrauch für einen bestimmten Tag
-    public void addKcalToDailyData(LocalDate date, double kcalPlus, double kcalMinus) {
-        DailyData data = dailyData.getOrDefault(date, new DailyData(0, 0, 0));
-        data.setKcalPlus(data.getKcalPlus() + kcalPlus); // Hinzufügen der Aufnahme
-        data.setKcalMinus(data.getKcalMinus() + kcalMinus); // Hinzufügen des Verbrauchs
-        dailyData.put(date, data);
-    }
-
     // Methode zum Abrufen von Tagesdaten
     public DailyData getDailyData(LocalDate date) {
         return dailyData.get(date);

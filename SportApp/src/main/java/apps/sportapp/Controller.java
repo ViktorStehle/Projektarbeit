@@ -146,13 +146,13 @@ public class Controller {
             Sportaktivität sport;
             switch (selectedSport) {
                 case "Joggen":
-                    sport = new Joggen(duration, distance);
+                    sport = new Joggen(currentUserObj ,duration, distance);
                     break;
                 case "Radfahren":
-                    sport = new Radfahren(duration, distance);
+                    sport = new Radfahren(currentUserObj ,duration, distance);
                     break;
                 case "Schwimmen":
-                    sport = new Schwimmen(duration, distance);
+                    sport = new Schwimmen(currentUserObj ,duration, distance);
                     break;
                 default:
                     showAlert(Alert.AlertType.WARNING, "Achtung", "Bitte wählen Sie eine gültige Sportart aus.");
