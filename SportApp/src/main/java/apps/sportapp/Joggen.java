@@ -1,22 +1,26 @@
 package apps.sportapp;
 
 public class Joggen extends Ausdauersportarten {
-    private int kcal;
-    private float geschwindigkeit; // min pro km
+    private float kcal;
+    private float pace; // km / h 
 
-    public Joggen(int dauer, float distanz) {
-        super(dauer, distanz);
-        this.geschwindigkeit = dauer / distanz;
-        this.kcal = (int) (1 / dauer * 70 * distanz); // Gewicht anpassbar machen
+    public Joggen(User user, int time, float dist) {
+        super(user, time, dist);
+        this.pace = dist / time * 60;
+        setKcal(user, time, dist);
     }
 
     @Override
-    public int getKcal() {
-        return this.kcal;
+    public float getKcal() {
+        return kcal;
     }
-
+ 
     @Override
-    public float getGeschwindigkeit() {
-        return geschwindigkeit;
+    public float getPace() {
+        return pace;
+    }
+    
+    public void setKcal(User user, float time, float dist) {
+    	this.kcal = (float) (0.75 * (dist / time * 60) * user.getWeight() * (time / 60));
     }
 }

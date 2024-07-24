@@ -1,24 +1,38 @@
 package apps.sportapp;
 
 public class Sportaktivität {
-    private int dauer;
+    private float time;
+    private User user;
 
 
-    public Sportaktivität(int dauer) {
-        this.dauer = dauer;
+    public Sportaktivität(User user, int time) {
+        this.user = user;
+    	this.time = time;
     }
 
-    public int getDauer() {
-        return dauer;
+    public float getTime() {
+        return time;
+    }
+    
+    public float getKcal() {
+    	return 150;
+    }
+    
+    public User getUser() {
+    	return user;
     }
 
-    public void setDauer(int dauer) {
-        this.dauer = dauer;
+    public void setTime(int time) {
+        this.time = time;
     }
+    
+    public void setUser(User user) {
+    	this.user = user;
+    }
+    
+ 
 
-    public int getKcal() {
-        return 150;
-    }
+ 
 }
 
 

@@ -1,22 +1,27 @@
 package apps.sportapp;
 
 public class Radfahren extends Ausdauersportarten {
-    private int kcal;
-    private float geschwindigkeit; // km pro h
+    private float kcal;
+    private float pace; // km pro h
 
-    public Radfahren(int dauer, float distanz) {
-        super(dauer, distanz);
-        this.geschwindigkeit = dauer / distanz;
-        this.kcal = (int) (((28 * 0.2017) - (70 * 0.09036) + (130 * 0.4472) - 20.4022) * dauer / 4.184); // anpassbar
+    public Radfahren(User user, int time, float dist) {
+        super(user, time, dist);
+        this.pace = dist / time * 60;
+        setKcal(user, time, dist);
     }
 
     @Override
-    public int getKcal() {
+    public float getKcal() {
         return kcal;
     }
 
     @Override
-    public float getGeschwindigkeit() {
-        return geschwindigkeit;
+    public float getPace() {
+        return pace;
     }
+    
+    public void setKcal(User user, float time, float dist) {
+    	this.kcal = (float) (0.049 * user.getWeight() * (dist / time * 60) * time) / 60;
+    }
+    
 }

@@ -162,7 +162,7 @@ public class Controller {
             double kcalMinus = sport.getKcal();
 
             if (sport instanceof Ausdauersportarten) {
-                speedLabel.setText(String.format("Durchschnittsgeschwindigkeit: %.2f", ((Ausdauersportarten) sport).getGeschwindigkeit()));
+                speedLabel.setText(String.format("Durchschnittsgeschwindigkeit: %.2f", ((Ausdauersportarten) sport).getPace()));
             }
 
             if (currentUserObj != null) {

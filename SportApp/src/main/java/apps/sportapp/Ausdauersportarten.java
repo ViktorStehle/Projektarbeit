@@ -1,22 +1,25 @@
 package apps.sportapp;
 
 public class Ausdauersportarten extends Sportaktivität {
-    private float distanz;
+    private float distance;
 
-    public Ausdauersportarten(int dauer, float distanz) {
-        super(dauer);
-        this.distanz = distanz;
+    public Ausdauersportarten(User user, int time, float dist) {
+        super(user, time);
+        this.distance = dist;
     }
 
-    public float getDistanz() {
-        return distanz;
+    public float getDistance() {
+        return distance;
     }
 
-    public void setDistanz(float distanz) {
-        this.distanz = distanz;
-    }
 
-    public float getGeschwindigkeit() {
+    public float getPace() {
         return 0; // Default implementation
     }
+    
+    public void setDistanz(float dist) {
+        this.distance = dist;
+    }
+    
+
 }
