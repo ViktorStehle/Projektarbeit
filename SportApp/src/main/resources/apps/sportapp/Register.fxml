@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" hgap="10" prefHeight="361.0" prefWidth="631.0" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="apps.sportapp.RegisterController">
+    <Label text="Benutzername:" />
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" />
+    <Label text="Passwort:" GridPane.rowIndex="1" />
+    <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Label text="Geschlecht:" GridPane.rowIndex="2" />
+    <ChoiceBox fx:id="genderChoiceBox" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label text="Körpergewicht (kg):" GridPane.rowIndex="3" />
+    <TextField fx:id="weightField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label text="Geburtsdatum:" GridPane.rowIndex="4" />
+    <DatePicker fx:id="birthDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Label text="Körpergröße (cm):" GridPane.rowIndex="5" />
+    <TextField fx:id="heightField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Button onAction="#handleSubmit" text="Einreichen" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <Label text="Bitte geben Sie diese Daten an, um fortzufahren. Diese Daten werden für spätere Berechnungen benötigt." GridPane.columnSpan="2" GridPane.rowIndex="7" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
