@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+// Die LoginController-Klasse verwaltet die Benutzeroberfläche und die Interaktionen im Anmeldefenster
 public class LoginController {
 
     @FXML
@@ -19,20 +20,22 @@ public class LoginController {
     private PasswordField passwordField;
 
     @FXML
+    // Methode zur Verarbeitung des Login-Vorgangs
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         try {
             List<User> users = UserFileUtil.readUsers();  // Read User objects
 
+            // Überprüfen, ob der Benutzername und das Passwort übereinstimmen
             boolean authenticated = users.stream()
                     .anyMatch(user -> user.getName().equals(username) && user.getPassword().equals(password));
 
             if (authenticated) {
-                Controller.setCurrentUser(username);
-                Stage currentStage = (Stage) usernameField.getScene().getWindow(); // Get current stage
-                openMainWindow(); // Open the main window
-                currentStage.close(); // Close the login window
+                Controller.setCurrentUser(username); // Setzt den aktuellen Benutzer im Controller
+                Stage currentStage = (Stage) usernameField.getScene().getWindow(); // Ermittelt das aktuelle Fenster
+                openMainWindow(); // Öffnen des Hauptfensters
+                currentStage.close(); // Schließen des Login-Fensters
             } else {
                 showAlert("Login Error", "Invalid username or password.");
             }
@@ -42,6 +45,7 @@ public class LoginController {
     }
 
     @FXML
+    // Methode zur Verarbeitung des Registrierungs-Vorgangs
     private void handleRegister() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Register.fxml"));
@@ -56,10 +60,12 @@ public class LoginController {
     }
 
     @FXML
+    // Methode zur Verarbeitung des Abbrechen-Vorgangs
     private void handleCancel() {
         ((Stage) usernameField.getScene().getWindow()).close();
     }
 
+    // Methode zur Anzeige von Fehlermeldungen
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(title);
@@ -67,6 +73,7 @@ public class LoginController {
         alert.showAndWait();
     }
 
+    // Methode zum Öffnen des Hauptfensters der Anwendung
     private void openMainWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SportAppMainScene.fxml"));
