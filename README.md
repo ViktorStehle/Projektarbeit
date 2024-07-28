@@ -26,6 +26,9 @@ https://docs.google.com/document/d/1ygwUZ1lwsaSvUwOR7lKWnRCCfixIiJIXQZVMdGvsTJk/
 Google Docs mit Tests zum Update vom 19.07.2024
 https://docs.google.com/document/d/1webnmagFkGTLAmq89r8FCmKDqbDG2jTPzmziAdCyfSU/edit?usp=sharing
 
+Abschließende Tests zur gesamten Funktionalität 28.07.2024
+https://docs.google.com/document/d/1UXtYUgJh83SX7lTLAzvP9wjxUBmvUu2Al9z61yQ1dr4/edit?usp=sharing
+
 Projektplan
  Anforderungsbeschreibung (Pflichtenheft, Use Case-Beschreibung
 oder ä.), die die Anforderungen an die zu erstellende Software in
