@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Controller {
+    // FXML Annotationen für die UI-Elemente
     @FXML
     private TextField kcalPlusField;
 
@@ -48,16 +49,18 @@ public class Controller {
         currentUser = username;
     }
 
+// Setzt den aktuellen Benutzer
     @FXML
     public void initialize() {
         loadCurrentUser();
         populateChartData();
 
 
-        // Initialize sportChoiceBox with options
+        // Initialisiert die Sportartenauswahlbox mit Optionen
         sportChoiceBox.setItems(FXCollections.observableArrayList("Joggen", "Radfahren", "Schwimmen"));
     }
 
+    // Lädt den aktuellen Benutzer basierend auf dem Benutzernamen
     private void loadCurrentUser() {
         if (currentUser == null) {
             showAlert(Alert.AlertType.ERROR, "Fehler", "Kein Benutzer ausgewählt.");
@@ -80,9 +83,10 @@ public class Controller {
             return;
         }
 
+        // Leert das Diagramm
         chart.getData().clear();
 
-        // Erstellen der Datenreihen für das Diagramm
+        // Erstellt neue Datenreihen für die Kalorienaufnahme, -abnahme und Differenz
         XYChart.Series<String, Number> seriesIncrease = new XYChart.Series<>();
         seriesIncrease.setName("Kalorienzunahme");
 
@@ -111,7 +115,7 @@ public class Controller {
         // Hinzufügen aller Datenreihen zum Diagramm
         chart.getData().addAll(seriesIncrease, seriesDecrease, seriesDifference);
     }
-
+    // Ändern des Kalorienbilanz Texts im GUI
     private void updateBalanceLabel(double kcalPlus, double kcalMinus) {
         double balance = kcalPlus - kcalMinus;
         if (balance > 0) {
@@ -124,6 +128,7 @@ public class Controller {
     }
 
     @FXML
+    // Berechnung der Durchschnittsgeschwindigkeit inklusive Speicherung
     private void calculateSport() {
         String selectedSport = sportChoiceBox.getValue();
         String durationText = durationField.getText();
@@ -142,7 +147,7 @@ public class Controller {
                 showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte geben Sie positive Werte für Dauer und Distanz ein.");
                 return;
             }
-
+            // Überprüfung der ausgewählten Sportart + Anlage eines neuen Objekts
             Sportaktivität sport;
             switch (selectedSport) {
                 case "Joggen":
@@ -205,12 +210,14 @@ public class Controller {
         alert.showAndWait();
     }
 
+    // Handler für das Speichern der täglichen Daten
     @FXML
     private void handleSaveDaily() {
         LocalDate date = LocalDate.now();
         String kcalPlusText = kcalPlusField.getText();
         String stepsText = stepsField.getText();
 
+        // Überprüft, ob alle Felder ausgefüllt sind
         if (kcalPlusText.isEmpty() || stepsText.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte füllen Sie alle Felder aus.");
             return;
@@ -220,11 +227,12 @@ public class Controller {
             int steps = Integer.parseInt(stepsText);
             double kcalPlus = Double.parseDouble(kcalPlusText);
 
+            // Überprüft, ob die eingegebenen Werte positiv sind
             if (kcalPlus < 0 || steps < 0) {
                 showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte geben Sie positive Werte ein.");
                 return;
             }
-
+            //Speicherung der Daten
             if (currentUserObj != null) {
                 User.DailyData dailyData = currentUserObj.getDailyData(date);
                 if (dailyData == null) {
