@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Die Controller-Klasse verwaltet die Benutzeroberfläche und die Interaktionen in der SportApp
 public class Controller {
     // FXML Annotationen für die UI-Elemente
     @FXML
