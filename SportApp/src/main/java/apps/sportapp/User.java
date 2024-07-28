@@ -6,16 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; // Serialisierungs-ID für die Klasse
     private String name;
     private String password;
     private String gender;
     private LocalDate birthDate;
     private int weight;
     private int height;
-    private Map<LocalDate, DailyData> dailyData;
+    private Map<LocalDate, DailyData> dailyData; // Map zur Speicherung der täglichen Daten
 
-    // Konstruktor
+    // Konstruktor zur Initialisierung eines Benutzerobjekts
     public User(String name, String password, String gender, LocalDate birthDate, int weight, int height) {
         this.name = name;
         this.password = password;
